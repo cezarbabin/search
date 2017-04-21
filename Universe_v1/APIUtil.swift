@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class APIUtil: NSObject {
-    public static func search(domain:String) {
+    public static func search(domain:String, completion: ((Swift.Error?, [[String: Any]]?) -> Void)?) {
         Alamofire.request("https://api.onuniverse.com/v1/domains/search",
                           method:.post,
                           parameters: [ "domain":domain],
@@ -19,7 +19,24 @@ class APIUtil: NSObject {
                           )
             .validate()
             .responseJSON { response in
-                debugPrint("Response: \(response)")
+                switch response.result {
+                case .success:
+                    let response = response.result.value as? [String: Any]
+                    if response != nil {
+                        let domains = response!["status"] as? [[String: Any]]
+                        if domains == nil {
+                            print ("Json format is corrupted")
+                            completion?(nil, nil)
+                            return
+                        }
+                        completion?(nil, domains)
+                        print("Validation Successful")
+                    }
+                    
+                case .failure(let error):
+                    completion?(error, nil)
+                    print(error)
+                }
         }
     }
 }
