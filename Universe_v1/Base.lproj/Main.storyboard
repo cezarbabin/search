@@ -89,13 +89,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Xxb-FG-K9p">
+                                <rect key="frame" x="0.0" y="323" width="375" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HQW-Bn-lAh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="03h-ha-1Ev"/>
                             <constraint firstItem="hbC-1Y-hCI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="7MT-lw-Hw5"/>
+                            <constraint firstItem="Xxb-FG-K9p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Bnb-KC-pgk"/>
                             <constraint firstItem="hbC-1Y-hCI" firstAttribute="top" secondItem="st0-dE-MuF" secondAttribute="bottom" id="FYW-VD-6Cf"/>
                             <constraint firstItem="Drl-jQ-r6N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="28" id="Hdu-7o-aDL"/>
+                            <constraint firstItem="Xxb-FG-K9p" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Iv1-Ev-gw1"/>
                             <constraint firstAttribute="trailing" secondItem="st0-dE-MuF" secondAttribute="trailing" id="JTZ-ve-buq"/>
                             <constraint firstItem="Drl-jQ-r6N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="JkG-7Z-kUO"/>
                             <constraint firstItem="hbC-1Y-hCI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.724138" constant="20" id="SEg-oa-etA"/>
@@ -105,6 +110,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Xxb-FG-K9p" id="Lc7-U1-IgI"/>
                         <outlet property="tableView" destination="hbC-1Y-hCI" id="dZz-VY-TU6"/>
                         <outlet property="textField" destination="HQW-Bn-lAh" id="WiL-3E-wpd"/>
                     </connections>

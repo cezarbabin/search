@@ -19,6 +19,11 @@ class ViewController: UIViewController {
             self.textField.delegate = self
         }
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView! {
+        didSet {
+            self.activityIndicator.isHidden = true
+        }
+    }
     
     var domains : [[String : Any]]? {
         didSet {
@@ -26,19 +31,37 @@ class ViewController: UIViewController {
         }
     }
     
+    var loading : Bool = false {
+        didSet {
+            if self.loading {
+                self.tableView.isHidden = true
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            } else {
+                self.tableView.isHidden = false
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+            }
+            
+        }
+    }
+    
     func updateView() {
         self.tableView.reloadData()
-        
+        self.loading = false
         if self.domains != nil {
             let count = self.domains!.count
             if count == 0 {
                 self.tableView.isHidden = true
             }
+        } else {
+            self.tableView.isHidden = true
         }
         
     }
     
     func search() {
+        self.loading = true
         let query : String? = self.textField.text
         if (query != nil) {
             DispatchQueue.main.async {
