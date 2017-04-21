@@ -25,12 +25,10 @@ class APIUtil: NSObject {
                     if response != nil {
                         let domains = response!["status"] as? [[String: Any]]
                         if domains == nil {
-                            print ("Json format is corrupted")
                             completion?(nil, nil)
                             return
                         }
                         completion?(nil, domains)
-                        print("Validation Successful")
                     }
                     
                 case .failure(let error):

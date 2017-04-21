@@ -35,7 +35,6 @@ class DomainTableViewCell: UITableViewCell {
         if (domainName != nil){
             self.domainNameLabel.text = domainName
         }
-        
         if self.domainStatus == .free {
             self.buildFreeCell()
         } else {
@@ -66,10 +65,7 @@ class DomainTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+
     }
-    
-    
 
 }

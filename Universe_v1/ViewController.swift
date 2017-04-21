@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField: UITextField! {
         didSet {
-            print ("pressed search")
             self.textField.delegate = self
         }
     }
@@ -42,7 +41,6 @@ class ViewController: UIViewController {
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
             }
-            
         }
     }
     
@@ -67,18 +65,11 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 APIUtil.search(domain: query!) { (error, result) in
                     if error == nil {
-                        print ("Request returned");
-                        let domains = result
                         self.domains = result
-                        for domain in domains! {
-                            //let domainName = domain["name"]
-                            //print (domain["summary"] ?? "unclear")
-                        }
                     }
                 }
             }
         }
-        
     }
 
     override func viewDidLoad() {
@@ -91,16 +82,15 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 
 extension ViewController : UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
 }
 
 extension ViewController : UITableViewDataSource {
